@@ -1,0 +1,20 @@
+public class Solution {
+    public void rotate(ArrayList<ArrayList<Integer>> arr) {
+    int n= arr.size(), cur;
+    for(int i=0;i<n-1;i++) {
+        for(int step = 1 ;step<=n-i-1;step++) {
+            cur = arr.get(i).get(step+i);
+            arr.get(i).set(step+i,arr.get(i+step).get(i));
+            arr.get(i+step).set(i,cur);
+        }
+    }
+    
+    for(int i=0;i<n/2;i++) {
+        for(int j=0;j<n;j++) {
+            cur = arr.get(j).get(i);
+            arr.get(j).set(i,arr.get(j).get(n-i-1));
+            arr.get(j).set(n-i-1,cur);
+        }
+    }
+  }
+}
